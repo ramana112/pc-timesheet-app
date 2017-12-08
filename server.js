@@ -65,12 +65,13 @@ app.get('/', function(req, res) {
 
 //app.get('/', routes.index);
 app.get('/customers', customers.list);
+app.get('/tasks', customers.task_list);
 //app.get('/customers/add', customers.add);
 app.post('/customers/add', customers.save);
 //app.get('/customers/delete/:id', customers.delete_customer);
 //app.get('/customers/edit/:id', customers.edit);
-app.post('/customers/staff',customers.checkLogin);
-
+app.post('/customers/doLogin',customers.checkLogin);
+app.post('/tasks/addTasks',customers.edit_save);
 
 //app.use(app.router);
 

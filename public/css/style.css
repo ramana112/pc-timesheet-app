@@ -16,9 +16,9 @@ body {
 }
 
 .page-container{
-    display:grid;
+    /*display:grid;*/
     min-height:400px;
-    grid-template-columns: 1fr 3fr;
+    /*grid-template-columns: 1fr 3fr;*/
 }
 .page-data{padding:10px;}
 .page-header{
@@ -119,5 +119,9 @@ a{
     background-color:rgba(15, 83, 90, 0.79)
  }
  .header_cont{
-     text-align: center;
+    margin-left: 6em;
+ }
+ .sheet_cont{
+     display: grid;
+     grid-template-columns: 1fr 3fr;
  }

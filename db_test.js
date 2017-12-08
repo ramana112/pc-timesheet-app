@@ -22,5 +22,20 @@ con.connect(function(err) {
   }
   
 });
+con.connect(function(err) {
+  if (err){
+    throw err;
+  } else {
+    console.log(" Connected!");
+    con.query("SELECT * FROM task", function (err, result, fields) {
+      if (err) throw err;
+        console.log(result);
+        result.forEach(function(element) {
+          console.log(element.id+' '+element.date+' '+element.task+' '+element.status);
+        }, this);
+    });
+  }
+  
+});
 
 
