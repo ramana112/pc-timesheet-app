@@ -1,0 +1,16 @@
+<div class="page-data">
+<div style="color:red">{{errorMsg}}</div>
+ <form method = "post" name="loginForm">
+    <div id="content">
+        <label>
+            <span>LoginId</span>
+            <input class="input" type="text" name="login" ng-model="details.login" required/>
+          </label>
+          <label>
+            <span>Password</span>
+            <input class="input" type="password" name="pwd" ng-model="details.pwd" required/>
+          </label><br>
+          <button id="login_but" ng-disabled="loginForm.$invalid" ng-click="staff(details)">Login</button>
+   </div>
+</form>
+</div>
