@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+</html>
+    <head>
+        <title>TimeSheet applicaiton</title>
+        <link href="./css/style.css" rel="stylesheet">
+        <link href="./css/login.css" rel="stylesheet">
+        <link href="./css/customer.css" rel="stylesheet">
+
+        
+    </head>
+    <body ng-app="myApp">
+        <div id="wrapper">
+            <div class="page-header">
+                <h1 class="header_cont">Daily Timesheet</h1>
+                   <div>
+                       <div class="head_but"><a href="#!/">Login</a></div>
+                       <div class="head_but"><a href="#!/">Logout</a></div>
+                    </div> 
+            </div>
+            <div class="page-container">
+                    <div class="left_nav">
+                            <ul class="ulist">
+                                <li class="list1"><a class="anchor" href="#!/">Task</a></li>
+                                <li class="list2"><a class="anchor" href="#!/">TimeSheet</a></li>
+                            </ul>
+                    </div>
+                <ng-view>
+					Index page content..
+			    </ng-view>
+
+            </div>
+            <div id="footer">
+                @pioneer coders  <a href="http://pioneercoders.com/#/home">www.pioneercoders.com</a>
+            </div>
+        </div>
+       
+    </body>
+    <script type="text/javascript" src="./js/angular.min.js"></script>
+    <script type="text/javascript" src="./js/angular-route.min.js"></script>
+
+    <script type="text/javascript" src="./js/app.js"></script>
+</html>
+    
