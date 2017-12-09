@@ -53,17 +53,26 @@ span {
             margin-top: 5px;
             padding-bottom: 5px;
             font-size: 16px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+            border-bottom: 2px solid #2196F3;
             text-align: center;
             margin-left: 35%;
         }
         #login_but{
-            border: none;
-            color: white;
-            background-color: rgb(87, 121, 221);
-            padding:7px 13px;
+          border: none;
+          color: #0000008c;
+          background-color: #80808063;
+          padding: 11px 78px;
+          margin-top:42px;
         }
         #content{
             margin-top:36px;
+            height:411px;
+        }
+        #login_heading{
+          text-align: center;
+        }
+        #help_cont{
+          margin-left: 39em;
+          margin-top: 34px;
         }
         

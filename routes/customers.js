@@ -25,13 +25,35 @@ exports.list = function(req, res){
   
 };
 
-/*exports.edit = function(req, res){
+exports.task_list = function(req, res){
+    
+      req.getConnection(function(err,connection){
+           
+            var query = connection.query('SELECT * FROM task',function(err,rows)
+            {
+                
+                if(err)
+                    console.log("Error Selecting : %s ",err );
+                //console.log(rows);
+                //res.render('customers',{page_title:"Customers - Node.js",data:rows});
+                res.setHeader('Content-Type', 'application/json');
+                res.send(JSON.stringify(rows));
+                //res.end(JSON.stringify(rows));  
+               
+             });
+             
+             //console.log(query.sql);
+        });
+      
+    };
+    
+exports.edit = function(req, res){
     
     var id = req.params.id;
     
     req.getConnection(function(err,connection){
        
-        var query = connection.query('SELECT * FROM customer WHERE id = ?',[id],function(err,rows)
+        var query = connection.query('SELECT * FROM task WHERE id = ?',[id],function(err,rows)
         {
             
             if(err)
@@ -46,7 +68,40 @@ exports.list = function(req, res){
          //console.log(query.sql);
     }); 
 };
-*/
+exports.edit_save = function(req,res){
+    
+    var input = JSON.parse(JSON.stringify(req.body));
+    
+    req.getConnection(function (err, connection) {
+        
+        var data = {
+            
+            date    : input.date,
+            //address : input.address,
+            task   : input.task,
+            status  : input.status
+        
+        };
+       console.log('save request...', data);
+
+        var query = connection.query("INSERT INTO task set ? ",[data], function(err, rows)
+        {
+  
+          if (err)
+              console.log("Error inserting : %s ",err );
+         
+          //res.redirect('/customers');
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify('success'));
+          
+        });
+        
+       // console.log(query.sql); get raw query
+    
+    });
+};
+
+
 /*Save the customer*/
 exports.save = function(req,res){
     
