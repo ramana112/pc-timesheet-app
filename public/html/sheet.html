@@ -1,16 +1,17 @@
+<div class="sheet_display">
 <div class="left_nav">
-        <ul class="ulist">
-            <li class="list1"><a class="anchor" href="#!/task/taskpage">Task</a></li>
-            <li class="list2"><a class="anchor" href="#!/sheet/timesheetpages">TimeSheet</a></li>
+        <ul class="ulist" ng-class=" {'active': isActive}">
+            <li class="list1"  ng-class="{'active': currentPage=='task'}"><a class="anchor" href="#!/task" >Task</a></li>
+            <li class="list2"  ng-class="{'active': currentPage=='sheet'}"><a class="anchor" href="#!/sheet">TimeSheet</a></li>
         </ul>
 </div>
 <div class="page-data">
          <div class="data-btn">
-             <button type="button" ng-click="togglepopup()" id="time_but" class="">Add Entry</button>
+             <button type="button" ng-click="togglepopup()" id="time_but" class="">Add Time</button>
          </div>
          <div class="data-table">
             <table border="1" cellpadding="7" cellspacing="7">
-                <tr>
+                <tr class="table_row">
                     <th width="50px">No</th>
                     <th>Date</th>
                    <!-- <th>Address</th>-->
@@ -18,12 +19,12 @@
                     <th>Time</th>
                    <!-- <th width="120px">Action</th>-->
                 </tr>
-                <tr ng-repeat="customer in customers">
-                    <td width="50px"> {{customer.id}} </td>
-                    <td>{{customer.date | date:'dd-MM-yyyy'}}</td>
+                <tr class="table_row" ng-repeat="sheet in sheetList">
+                    <td width="50px"> {{sheet.id}} </td>
+                    <td>{{sheet.date | date:'dd-MM-yyyy'}}</td>
                    <!-- <td>{{customer.address}}</td>-->
-                    <td>{{customer.option}}</td>
-                    <td>{{customer.time}}</td>
+                    <td>{{sheet.option}}</td>
+                    <td>{{sheet.time}}</td>
                    <!-- <td width="120px">
                         <a class="a-inside edit" href="#!edit_customer/edit/{{customer.id}}">Edit</a>
                         <a class="a-inside delete" href="#!delete_customer/delete/{{customer.id}}">Delete</a>
@@ -33,6 +34,7 @@
          </div>
         </div>
         </div>
+    </div>
      <!--popup code goes here-->
         <div id="container1" class="container1" ng-class="{'show':showpopup,'hide':!showpopup}">
            
@@ -40,6 +42,7 @@
                 <div class="content1">
                 <table cellpadding="11" class="cont1">
                         <span ng-click="togglepopup()" id="close">&times;</span>
+                        <caption><b>Add Here</b></caption>
                 <tr>
                     <td class="label">Date</td><td>: <input type="date" name="date" required ng-model="student.date"></td>
                     </tr>
@@ -56,7 +59,7 @@
                     <tr>
                     <td class="label"></td>
                     <td>
-                        &nbsp; <input type="submit" name="submit" value="Save" ng-click="addCustomers(student);togglepopup()">
+                        &nbsp; <input type="submit" name="submit" value="Save" ng-click="addSheet(student);togglepopup()">
                         <!--<input type="button" name="cancel" value="Cancel" class="cancel" ng-click="cancelAdd()">-->
                     </td>
                     </tr>

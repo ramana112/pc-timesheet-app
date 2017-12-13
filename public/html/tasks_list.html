@@ -2,11 +2,31 @@
 <div class="left_nav">
         <ul class="ulist">
             <li class="list1"><a class="anchor" href="#!/tasks">Task</a></li>
-            <li class="list2"><a class="anchor" href="#!/customers">TimeSheet</a></li>
+            <li class="list2"><a class="anchor" href="#!/sheet">TimeSheet</a></li>
         </ul>
-</div>
-    <div>
-    {{tasksListObj}}    
+</div> 
+    <div class="data-table mar">
+            <table border="1" cellpadding="7" cellspacing="7">
+                <tr class="table_row">
+                    <th width="50px">No</th>
+                    <th>Date</th>
+                   <!-- <th>Address</th>-->
+                    <th>Tasks</th>
+                    <th>Status</th>
+                   <!-- <th width="120px">Action</th>-->
+                </tr>
+                <tr class="table_row" ng-repeat="tasks in tasksListObj">
+                    <td width="50px"> {{tasks.id}} </td>
+                    <td>{{tasks.date | date:'dd-MM-yyyy'}}</td>
+                   <!-- <td>{{customer.address}}</td>-->
+                    <td>{{tasks.task}}</td>
+                    <td>{{tasks.status}}</td>
+                   <!-- <td width="120px">
+                        <a class="a-inside edit" href="#!edit_customer/edit/{{customer.id}}">Edit</a>
+                        <a class="a-inside delete" href="#!delete_customer/delete/{{customer.id}}">Delete</a>
+                    </td>-->
+                </tr>          
+            </table>
     </div>    
                 
        

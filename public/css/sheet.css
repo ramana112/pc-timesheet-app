@@ -1,0 +1,38 @@
+.show{
+    display:block;
+}
+.hide{
+    display:none;
+}
+.content1{
+    display:grid;
+    /*grid-template-rows: 2fr 1fr;*/
+    position: absolute;
+    right:3%;
+    top: 19%;
+    width: 20%;
+    height: 325px;
+    background-color: white;
+    border: 1px solid grey;
+}
+.inp_add{
+    width:150px;
+}
+#time_but{
+   
+    border: none;
+    color: white;
+    border-radius: 25px;
+    background-color: rgb(87, 121, 221);
+    padding:7px 13px;
+    margin-bottom:9px;
+}
+#time_but:focus{
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.sheet_display{
+    display:grid;
+    grid-template-columns: 1fr 3fr;
+}

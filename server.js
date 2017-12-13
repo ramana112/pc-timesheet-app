@@ -10,7 +10,9 @@ var path = require('path');
 var fs = require("fs");
 
 //load customers route
-var customers = require('./routes/customers'); 
+var users = require('./routes/users');
+var timesheet = require('./routes/sheets');
+var task = require('./routes/tasks'); 
 var app = express();
 
 var connection  = require('express-myconnection'); 
@@ -63,15 +65,13 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + './login.html'));
 });*/
 
-//app.get('/', routes.index);
-app.get('/customers', customers.list);
-app.get('/tasks', customers.task_list);
-//app.get('/customers/add', customers.add);
-app.post('/customers/add', customers.save);
-//app.get('/customers/delete/:id', customers.delete_customer);
-//app.get('/customers/edit/:id', customers.edit);
-app.post('/customers/doLogin',customers.checkLogin);
-app.post('/tasks/addTasks',customers.edit_save);
+app.post('/users/doLogin',users.checkLogin);
+app.get('/sheet/list/:userId', timesheet.sheet_list);
+app.post('/sheet/add', timesheet.save);
+app.get('/tasks/list/:userId',task.task_list);
+app.post('/tasks/save', task.save);
+app.get('/tasks/edit/:id',task.edit);
+app.post('/tasks/update',task.update);
 
 //app.use(app.router);
 

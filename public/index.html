@@ -2,19 +2,19 @@
 </html>
     <head>
         <title>TimeSheet applicaiton</title>
+        
         <link href="./css/style.css" rel="stylesheet">
         <link href="./css/login.css" rel="stylesheet">
-        <link href="./css/customer.css" rel="stylesheet">
-
-        
+        <link href="./css/sheet.css" rel="stylesheet">
+        <link href="./css/tasks.css" rel="stylesheet"> 
     </head>
     <body ng-app="myApp">
         <div id="wrapper">
             <div class="page-header">
                 <h1 class="header_cont">Daily Timesheet</h1>
                    <div>
-                       <div class="head_but" ><a style="color:white;" href="#!/">Login</a></div>
-                       <div class="head_but"><a style="color:white;" href="#!/">Logout</a></div>
+                      <!-- <div class="head_but" ><a style="color:white;" href="#!/">Login</a></div>-->
+                       <div class="head_but" ng-hide="!isLoggedin"><a style="color:white;" href="#!/" >Logout</a></div>
                     </div> 
             </div>
             <div class="page-container">
@@ -25,7 +25,7 @@
 
             </div>
             <div id="footer">
-                @pioneer coders  <a href="http://pioneercoders.com/#/home">www.pioneercoders.com</a>
+                @pioneer coders <a href="http://pioneercoders.com/#/home">www.pioneercoders.com</a>
             </div>
         </div>
        

@@ -1,17 +1,17 @@
-<div class="page-data">
-<div style="color:red">{{errorMsg}}</div>
+<div class="page-data cards">
+<div style="color:rgb(141, 104, 104);font-size:20px;">{{errorMsg}}</div>
  <form method = "post" name="loginForm">
     <div id="content">
       <h2 id="login_heading">Enter Login details</h2>
         <label>
             <span>LoginId</span>
-            <input class="input" type="text" name="login" ng-model="details.login" required/>
+            <input class="input" type="text" name="login" ng-model="user.login" required/>
           </label>
           <label>
             <span>Password</span>
-            <input class="input" type="password" name="pwd" ng-model="details.pwd" required/>
+            <input class="input" type="password" name="pwd" ng-model="user.pwd" required/>
           </label><br>
-          <button id="login_but" ng-disabled="loginForm.$invalid" ng-click="doLogin(details)">Login</button>
+          <button id="login_but" ng-disabled="loginForm.$invalid" ng-click="doLogin(user)">Login</button>
           <p id="help_cont">Need help signing in?<a style="color:#2196F3" href="#">Contact support</a></p>
    </div>
 </form>

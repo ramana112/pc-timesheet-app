@@ -1,0 +1,20 @@
+.mar{
+    margin:33px;
+}
+.task_display{
+    display:grid;
+    grid-template-columns: 1fr 3fr;
+}
+#close{
+    margin-left: 11em;
+    font-size: 22px;
+}
+.cont1{
+    margin-top: -56px;
+    padding-top: 28px;
+}
+@media only screen and (max-width: 768px){
+    .xs-wid{
+        width:34%;
+    }
+}
