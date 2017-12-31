@@ -1,0 +1,21 @@
+.pagination{
+    list-style-type: none;
+    display: inline-flex;
+    float: right;
+    margin-bottom: 10px;
+}
+.pageList{
+    border:1px solid #ddd;
+    padding:10px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;  
+}
+.active1{
+    background: rgb(87, 121, 221);
+    color:white;
+}
+.pageList:hover{
+    background-color: #337ab7;
+    color:white;
+    cursor: pointer;
+}

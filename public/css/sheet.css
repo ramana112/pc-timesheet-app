@@ -1,0 +1,49 @@
+.show{
+    display:block;
+}
+.hide{
+    display:none;
+}
+.content1{
+    display:grid;
+    position: absolute;
+    margin: auto;
+    right: 0;
+    left: 0;
+    top: 19%;
+    width: 21%;
+    height: 335px;
+    background-color: white;
+    border: 1px solid grey;
+}
+.align-text1{
+    text-align: center;
+    background-color: rgb(87, 121, 221);
+    color:white;
+    padding:7px;
+    height: 40px;
+}
+.inp_add{
+    width: 157px;
+    padding: 3px 2px;
+    border: 1px solid rgb(87, 121, 221);;
+}
+#time_but{ 
+    border: none;
+    color: white;
+    background-color: rgb(87, 121, 221);
+    padding:7px 13px;
+    margin-bottom:9px;
+    cursor: pointer;
+}
+#time_but:focus{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+}
+.sheet_display{
+    display:grid;
+    grid-template-columns: 1fr 4fr;
+    background-color: white;
+}

@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 </html>
     <head>
-        <title>TimeSheet applicaiton</title>
+        <title>TimeSheet applicaiton</title> 
         <link href="./css/style.css" rel="stylesheet">
         <link href="./css/login.css" rel="stylesheet">
-        <link href="./css/customer.css" rel="stylesheet">
-
-        
+        <link href="./css/sheet.css" rel="stylesheet">
+        <link href="./css/tasks.css" rel="stylesheet"> 
+        <link href="./css/pagination.css" rel="stylesheet"> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
-    <body ng-app="myApp">
-        <div id="wrapper">
-            <div class="page-header">
-                <h1 class="header_cont">Daily Timesheet</h1>
-                   <div>
-                       <div class="head_but" ><a style="color:white;" href="#!/">Login</a></div>
-                       <div class="head_but"><a style="color:white;" href="#!/">Logout</a></div>
-                    </div> 
-            </div>
-            <div class="page-container">
-                   
-                <ng-view>
-					Index page content..
-			    </ng-view>
+    <body ng-app="myApp" class="ft-open-sans-regular">
+      <div id="wrapper">
+        <div class="page-header">
+        <!--  <span class="icon" id="icon" ng-click="toggleMenu()">
+                <i class="fa fa-bars" ng-hide="!isLoggedin"  aria-hidden="true"></i>
+            </span> -->
+            <h1 class="header_cont ft-open-sans-regular">Daily Timesheet</h1>
+                <div>
+                    <div class="head_but" ng-hide="!isLoggedin"><a style="color:white;" href="#!/" >Logout</a></div>
+                </div>      
+          </div>
+          <div class="page-container">     
+            <ng-view>
+                Index page content..
+            </ng-view>
 
-            </div>
-            <div id="footer">
-                @pioneer coders  <a href="http://pioneercoders.com/#/home">www.pioneercoders.com</a>
-            </div>
+           </div>
+           <div id="footer">
+                @pioneer coders <a id="foot-link" href="http://pioneercoders.com/#/home">www.pioneercoders.com</a>
+           </div>
         </div>
-       
     </body>
     <script type="text/javascript" src="./js/angular.min.js"></script>
     <script type="text/javascript" src="./js/angular-route.min.js"></script>
-
+    <script type="text/javascript" src="./js/lodash.min.js"></script>
     <script type="text/javascript" src="./js/app.js"></script>
 </html>
     

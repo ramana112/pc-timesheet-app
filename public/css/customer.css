@@ -6,7 +6,6 @@
 }
 .content1{
     display:grid;
-    /*grid-template-rows: 2fr 1fr;*/
     position: absolute;
     right:3%;
     top: 19%;
@@ -19,7 +18,6 @@
     width:150px;
 }
 #time_but{
-   
     border: none;
     color: white;
     border-radius: 25px;

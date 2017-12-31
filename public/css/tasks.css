@@ -1,0 +1,41 @@
+.mar{
+    margin:33px;
+}
+.task_display{
+    display:grid;
+    grid-template-columns: 1fr 4fr;
+    background-color:white;
+}
+#close{
+    right: 5px;
+    top: 5px;
+    position: absolute;
+    font-size: 14px;
+    width: 15px;
+    height: 15px;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    line-height: 15px;
+}
+.cont1{
+    margin-top: 0px;
+    padding-top: 5px;
+}
+.page_display{
+   float:right;
+}
+.align-text{
+    text-align: center;
+    background-color: rgb(87, 121, 221);
+    color:white;
+    padding:7px;
+}
+
+@media only screen and (max-width: 768px){
+    .xs-wid{
+        width:34%;
+    }
+}

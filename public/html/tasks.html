@@ -1,67 +1,109 @@
-<div class="left_nav">
-        <ul class="ulist">
-            <li class="list1"><a class="anchor" href="#!/task">Task</a></li>
-            <li class="list2"><a class="anchor" href="#!/sheet">TimeSheet</a></li>
-        </ul>
+<div class="task_display ft-open-sans-regular">
+  <div class="left_nav" ng-class="{'expand':menuExpanded}">
+    <ul class="ulist">
+        <li class="list1" ng-class="{'active': currentTab=='task'}">
+            <i class="fa fa-file-text-o" id="tooltip"></i>
+            <a class="anchor" href="#!/task">Task</a>
+        </li>
+        <li class="list2" ng-class="{'active': currentTab=='sheet'}">
+            <i class="fa fa-clock-o" id="tooltip"></i>
+            <a class="anchor" href="#!/sheet">TimeSheet</a> 
+        </li>
+    </ul>
+   </div>
+   <div class="page-data">
+    <div class="data-btn">
+      <button type="button" ng-click="togglepopup();clearForm()" id="time_but" class="">Add Task</button>
+        <ul ng-if="pager.pages.length" class="pagination">
+            <li class="pageList" ng-class="{disabled:pager.currentPage === 1}">
+                <a ng-click="setPage(1)">First</a>
+            </li>
+            <li class="pageList" ng-class="{disabled:pager.currentPage === 1}" ng-click="setPage(pager.currentPage - 1)">
+                <a>Previous</a>
+            </li>
+            <li class="pageList" ng-repeat="page in pager.pages" ng-class="{active1:pager.currentPage === page}" ng-click="setPage(page)">
+                <a>{{page}}</a>
+            </li>                
+            <li class="pageList" ng-class="{disabled:pager.currentPage === pager.totalPages}" ng-click="setPage(pager.currentPage + 1)">
+                <a >Next</a>
+            </li>
+            <li class="pageList" ng-class="{disabled:pager.currentPage === pager.totalPages}" ng-click="setPage(pager.totalPages)">
+                <a >Last</a>
+            </li>
+         </ul>
+    </div>
+    <div class="data-table ">
+       <table class="table" border="1" cellpadding="7" cellspacing="7">
+            <tr class="table_row">
+                <th width="50px">No</th>
+                <th width="200px">Date</th>
+                <th>Task</th>
+                <th>Start At</th>
+                <th>End At</th>
+                <th>Status</th>
+                <th>Updated On</th>
+                <th width="120px">Action</th>
+            </tr>
+            <tr class="table_row" ng-repeat="tasks in items | limitTo:pageSize">
+                <td width="50px"> {{(pager.startIndex) + ($index+1)}} </td>
+                <td width="25%">{{tasks.date | date:'dd-MM-yyyy'}}</td>
+                <td>{{tasks.task}}</td>
+                <td>{{tasks.startat}}</td>
+                <td>{{tasks.endat}}</td>
+                <td>{{tasks.status}}</td>
+                <td>{{tasks.updated_on| date:'dd-MM-yyyy HH:mm:ss'}}</td>
+                <td width="120px">
+                    <a class="a-inside edit" href="#" ng-click="editTask(tasks.id,$index,$event)">Edit</a>
+                </td>
+            </tr>          
+        </table>  
+     </div>
+  </div>
 </div>
-        <div class="page-data">
-         <div class="data-btn">
-             <button type="button" ng-click="togglepopup()" id="time_but" class="">Add Entry</button>
-         </div>
-         <div class="data-table">
-            <table border="1" cellpadding="7" cellspacing="7">
-                <tr>
-                    <th width="50px">No</th>
-                    <th>Date</th>
-                   <!-- <th>Address</th>-->
-                    <th>Task</th>
-                    <th>Status</th>
-                   <!-- <th width="120px">Action</th>-->
-                </tr>
-                <tr ng-repeat="customer in customers">
-                    <td width="50px"> {{customer.id}} </td>
-                    <td>{{customer.date | date:'dd-MM-yyyy'}}</td>
-                   <!-- <td>{{customer.address}}</td>-->
-                    <td>{{customer.task}}</td>
-                    <td>{{customer.status}}</td>
-                    <td width="120px">
-                        <a class="a-inside edit" href="#!edit_customer/edit/{{customer.id}}">Edit</a>
-                       <!-- <a class="a-inside delete" href="#!delete_customer/delete/{{customer.id}}">Delete</a>
-                    </td>-->
-                </tr>          
-            </table>
-         </div>
+<!--popup code goes here-->
+<div id="container1" class="container1" ng-class="{'show':showpopup,'hide':!showpopup}">
+    <div class="content1 xs-wid">
+        <div id="close" ng-click="togglepopup()">
+            <i class="fa fa-times"></i>
         </div>
-     <!--popup code goes here-->
-        <div id="container1" class="container1" ng-class="{'show':showpopup,'hide':!showpopup}">
-           
-            <form method="post">
-                <div class="content1">
-                <table cellpadding="11" class="cont1">
-                        <span ng-click="togglepopup()" id="close">&times;</span>
-                <tr>
-                    <td class="label">Date</td><td>: <input type="date" name="date" required ng-model="students.date"></td>
-                    </tr>
-                    <!--<tr>
-                    <td class="label" valign="top">Address</td>
-                    <td valign="top">: <textarea name="address" required cols="30" rows="5" ng-model="student.address"></textarea></td>
-                </tr>-->
-                <tr>
-                    <td class="label">Task</td><td>: <input class="inp_add" type="text" name="task" required ng-model="students.task"></td>
-                    </tr>
-                    <tr>
-                    <td class="label">Status</td><td>: <input class="inp_add" type="text" name="status" required ng-model="students.status"></td>
-                    </tr>
-                    <tr>
-                    <td class="label"></td>
-                    <td>
-                        &nbsp; <input type="submit" name="submit" value="Save" ng-click="addTasks(students);togglepopup()">
-                        <!--<input type="button" name="cancel" value="Cancel" class="cancel" ng-click="cancelAdd()">-->
-                    </td>
-                    </tr>
-                </table>
-            </form>
-            </div>
-        </div>
-                
-       
+        <caption><b class="align-text">Task</b></caption>
+        <form method="post">
+        <table cellpadding="11" class="cont1">
+        <tr>
+            <td class="label">Date</td>
+            <td>
+                <input type="date" class="inp_add" name="date" required ng-model="task.date" ng-if="!task.id">
+                <span ng-if="task.id">{{task.date | date:'dd-MM-yyyy'}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">Task</td><td> <input class="inp_add" type="text" name="task" required ng-model="task.task"></td>
+        </tr>
+        <tr>
+            <td class="label">StartAt</td><td> <input class="inp_add" type="text" name="time" required ng-model="task.startat"></td>
+        </tr>
+        <tr>
+            <td class="label">EndAt</td><td> <input class="inp_add" type="text" name="time" ng-model="task.endat"></td>
+        </tr>
+        <tr>
+            <td class="label">Status</td>
+            <td>
+                <select class="inp_add" id="status" type="text" name="status" required ng-model="task.status">
+                    <option>Started</option>
+                    <option>Inprogress</option>
+                    <option>Completed</option>
+                    <option>Blocked</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="label"></td>
+            <td>
+                &nbsp; <input type="submit" name="submit" value="Save" ng-click="addTask(task)" ng-if="!task.id">
+                &nbsp; <input type="submit" name="submit" value="Update" ng-click="updateTask(task)" ng-if="task.id">
+            </td>
+        </tr>
+     </table>
+    </form>
+   </div>
+</div>

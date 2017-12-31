@@ -4,13 +4,14 @@
  */
 
 var express = require('express');
-//var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 var fs = require("fs");
 
 //load customers route
-var customers = require('./routes/customers'); 
+var users = require('./routes/users');
+var timesheet = require('./routes/sheets');
+var task = require('./routes/tasks'); 
 var app = express();
 
 var connection  = require('express-myconnection'); 
@@ -18,9 +19,6 @@ var mysql = require('mysql');
 
 // all environments
 app.set('port', process.env.PORT || 4300);
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'ejs');
-//app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
@@ -39,19 +37,15 @@ if ('development' == app.get('env')) {
 -------------------------------------------*/
 
 app.use(
-    
-    connection(mysql,{
-        
+     connection(mysql,{ 
         host: 'localhost', //'localhost',
         user: 'root',
         password : 'root',
         port : 3307, //port mysql
         database:'timesheet'
-
     },'request') //or single
 
 );
-
 
 /*
  * GET home page.
@@ -59,21 +53,13 @@ app.use(
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + './index.html'));
 });
-/*app.post('/getstaff',function(req,res){
-    res.sendFile(path.join(__dirname + './login.html'));
-});*/
-
-//app.get('/', routes.index);
-app.get('/customers', customers.list);
-app.get('/tasks', customers.task_list);
-//app.get('/customers/add', customers.add);
-app.post('/customers/add', customers.save);
-//app.get('/customers/delete/:id', customers.delete_customer);
-//app.get('/customers/edit/:id', customers.edit);
-app.post('/customers/doLogin',customers.checkLogin);
-app.post('/tasks/addTasks',customers.edit_save);
-
-//app.use(app.router);
+app.post('/users/doLogin',users.checkLogin);
+app.get('/sheet/list/:userId', timesheet.sheet_list);
+app.post('/sheet/add', timesheet.save);
+app.get('/tasks/list/:userId',task.task_list);
+app.post('/tasks/save', task.save);
+app.get('/tasks/edit/:id',task.edit);
+app.post('/tasks/update',task.update);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

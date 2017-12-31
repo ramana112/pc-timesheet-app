@@ -1,5 +1,4 @@
 var mysql = require('mysql');
-
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -13,14 +12,13 @@ con.connect(function(err) {
   } else {
     console.log(" Connected!");
     con.query("SELECT * FROM sheet", function (err, result, fields) {
-      if (err) throw err;
+        if (err) throw err;
         console.log(result);
         result.forEach(function(element) {
           console.log(element.id+' '+element.date+' '+element.option+' '+element.time);
         }, this);
     });
   }
-  
 });
 con.connect(function(err) {
   if (err){
@@ -29,13 +27,12 @@ con.connect(function(err) {
     console.log(" Connected!");
     con.query("SELECT * FROM task", function (err, result, fields) {
       if (err) throw err;
-        console.log(result);
-        result.forEach(function(element) {
-          console.log(element.id+' '+element.date+' '+element.task+' '+element.status);
-        }, this);
+      console.log(result);
+      result.forEach(function(element) {
+      console.log(element.id+' '+element.date+' '+element.task+' '+element.status);
+      }, this);
     });
   }
-  
 });
 
 
